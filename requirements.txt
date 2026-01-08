@@ -1,6 +1,4 @@
 streamlit
 requests
 pandas
-plotly
-streamlit-plotly-events   # för click/tap-händelser i Plotly (valfritt)
-streamlit-autorefresh     # enkel auto-refresh (valfritt)
+matplotlib

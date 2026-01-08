@@ -64,7 +64,7 @@ def rank_sets(rows: list[dict]) -> tuple[set[str], set[str]]:
 
 def to_dataframe(rows: list[dict], display_ore: bool, include_vat: bool) -> pd.DataFrame:
     df = pd.DataFrame(rows)
-    df["start"] = pd.to_datetime(df["time_start"]).dt.tz_convert(TZ)
+    df["start"] = pd.to_datetime(df["time_start"], utc=True).dt.tz_convert(TZ)
     df["price_display"] = df["SEK_per_kWh"].astype(float).apply(
         lambda x: apply_unit_and_vat(x, display_ore, include_vat)
     )
@@ -208,3 +208,4 @@ with col_info:
             st.markdown("**Klass:** RÖD (plats 17–24)")
         else:
             st.markdown("**Klass:** GRÖN (övriga 72)")
+
